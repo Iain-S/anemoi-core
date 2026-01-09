@@ -39,7 +39,7 @@ jobs:
       - name: Install packages
         run: |
           # Install all packages from local
-          uv pip install ./training[all] ./graphs[all,typing] ./models[all,typing]
+          uv pip install -e ./training[all] -e ./graphs[all,typing] -e ./models[all,typing]
 
       - name: Run ty typing for models
         run: |
