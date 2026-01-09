@@ -70,6 +70,7 @@ optional-dependencies.migrations = [
 ]
 
 optional-dependencies.tests = [ "hypothesis>=6.11", "pytest>=8" ]
+optional-dependencies.typing = [ "ty>=0.0.10" ]
 
 urls.Documentation = "https://anemoi-models.readthedocs.io/"
 urls.Homepage = "https://github.com/ecmwf/anemoi-models/"
