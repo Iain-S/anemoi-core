@@ -96,6 +96,8 @@ optional-dependencies.tests = [
   "pytest-skip-slow>=0.0.5",
   "sshfs",
 ]
+optional-dependencies.typing = ["ty>=0.0.10"]
+
 urls.Changelog = "https://github.com/ecmwf/anemoi-training/CHANGELOG.md"
 urls.Documentation = "https://anemoi-training.readthedocs.io/"
 urls.Homepage = "https://github.com/ecmwf/anemoi-training/"
