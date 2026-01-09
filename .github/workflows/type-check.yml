@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 env:
+  # Surely incompatible with matrix python versions?
   UV_SYSTEM_PYTHON: 1
 
 jobs:
@@ -39,7 +40,7 @@ jobs:
       - name: Install packages
         run: |
           # Install all packages from local
-          uv pip install -e ./training[all] -e ./graphs[all,typing] -e ./models[all,typing]
+          uv pip install ./training[typing] ./graphs[typing] ./models[typing]
 
       - name: Run ty typing for models
         run: |
