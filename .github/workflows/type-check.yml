@@ -23,9 +23,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -40,6 +37,7 @@ jobs:
       - name: Install packages
         run: |
           # Install all packages from local
+          uv venv
           uv pip install ./training[typing] ./graphs[typing] ./models[typing]
 
       - name: Run ty typing for ${{ matrix.package }}
