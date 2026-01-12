@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - feat/**
   workflow_dispatch:
 
 env:
@@ -43,16 +44,16 @@ jobs:
           uv pip install ./training[typing] ./graphs[typing] ./models[typing]
 
       - name: Run ty typing for models
-        continues-on-error: true
+        continue-on-error: true
         run: |
           uv run ty check ./models --config-file ./models/ty.toml
 
       - name: Run ty typing for graphs
-        continues-on-error: true
+        continue-on-error: true
         run: |
           uv run ty check ./graphs --config-file ./graphs/ty.toml
 
       - name: Run ty typing for training
-        continues-on-error: true
+        continue-on-error: true
         run: |
           uv run ty check ./training --config-file ./training/ty.toml
