@@ -19,6 +19,7 @@ jobs:
       matrix:
         platform: ["ubuntu-latest"]
         python-version: ["3.12"]
+        package: ["graphs", "models", "training"]
     runs-on: ${{ matrix.platform }}
     timeout-minutes: 30
 
@@ -43,26 +44,9 @@ jobs:
           # Install all packages from local
           uv pip install ./training[typing] ./graphs[typing] ./models[typing]
 
-      - name: Run ty typing for models
-        continue-on-error: true
+      - name: Run ty typing for ${{ matrix.package }}
         run: |
           uv run ty check
-             --config-file ./models/ty.toml
+             --config-file ./${{ matrix.package }}/ty.toml
              --python "$(which python)"
-             ./models
-
-      - name: Run ty typing for graphs
-        continue-on-error: true
-        run: |
-          uv run ty check
-             --config-file ./graphs/ty.toml
-             --python "$(which python)"
-             ./graphs
-
-      - name: Run ty typing for training
-        continue-on-error: true
-        run: |
-          uv run ty check
-             --config-file ./training/ty.toml
-             --python "$(which python)"
-             ./training
+             ./${{ matrix.package }}
