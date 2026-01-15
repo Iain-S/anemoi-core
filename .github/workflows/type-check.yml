@@ -39,7 +39,7 @@ jobs:
 
       - name: Run ty typing for ${{ matrix.package }}
         run: |
-          uv run --with "ty>=0.0.12" check
+          uv run --with "ty>=0.0.12" ty check
              --config-file ./${{ matrix.package }}/ty.toml
              --output-format github
              ./${{ matrix.package }}/src/
