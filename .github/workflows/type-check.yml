@@ -41,5 +41,5 @@ jobs:
         run: |
           uv run ty check
              --config-file ./${{ matrix.package }}/ty.toml
-             --python "$(which python)"
+             --output-format github
              ./${{ matrix.package }}/src/
