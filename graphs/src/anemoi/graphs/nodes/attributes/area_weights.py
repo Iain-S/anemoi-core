@@ -110,7 +110,7 @@ class PlanarAreaWeights(BaseAreaWeights):
         float
             Mean nearest neighbor distance
         """
-        from scipy.spatial import cKDTree
+        from scipy.spatial import cKDTree  # type: ignore[unresolved-import]
 
         tree = cKDTree(points)
         distances, _ = tree.query(points, k=2)

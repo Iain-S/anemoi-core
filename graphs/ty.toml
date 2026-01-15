@@ -1,0 +1,13 @@
+# https://docs.astral.sh/ty/reference/configuration/
+[rules]
+invalid-argument-type = "ignore"
+possibly-missing-attribute = "ignore"
+unresolved-attribute = "ignore"
+invalid-method-override = "ignore"
+invalid-assignment = "ignore"
+invalid-return-type = "ignore"
+unsupported-operator = "ignore"
+no-matching-overload = "ignore"
+missing-argument = "ignore"
+unknown-argument = "ignore"
+parameter-already-assigned = "ignore"

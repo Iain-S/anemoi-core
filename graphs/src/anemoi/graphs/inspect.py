@@ -10,6 +10,7 @@
 import logging
 import os
 from pathlib import Path
+from typing import Optional
 
 import torch
 
@@ -44,7 +45,7 @@ class GraphInspector:
         self,
         path: str | Path,
         output_path: Path,
-        area: tuple[float, float, float, float] = None,
+        area: Optional[tuple[float, float, float, float]] = None,
         show_attribute_distributions: bool | None = True,
         show_nodes: bool | None = False,
         **kwargs,

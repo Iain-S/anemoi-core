@@ -10,6 +10,7 @@
 import os
 from collections.abc import Iterable
 from pathlib import Path
+from typing import Optional
 
 import scipy.sparse as sp
 import torch
@@ -24,8 +25,8 @@ class GraphExporter:
         self,
         graph: str | Path,
         output_path: str | Path,
-        edges_name: Iterable[tuple[str, str, str]] = None,
-        edge_attribute_name: str = None,
+        edges_name: Optional[Iterable[tuple[str, str, str]]] = None,
+        edge_attribute_name: Optional[str] = None,
         **kwargs,
     ):
         if isinstance(graph, Path) or isinstance(graph, str):
