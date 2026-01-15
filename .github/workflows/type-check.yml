@@ -35,7 +35,7 @@ jobs:
         run: |
           # Install local package(s)
           uv venv
-          uv pip install ./graphs[typing]
+          uv pip install ./graphs[healpix,hex,tri]
 
       - name: Run ty typing for ${{ matrix.package }}
         run: |
