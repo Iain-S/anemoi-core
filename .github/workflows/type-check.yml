@@ -1,0 +1,45 @@
+name: Type Checking
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ty:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ["ubuntu-latest"]
+        python-version: ["3.12"]
+        package: ["graphs"]
+    runs-on: ${{ matrix.platform }}
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: 0.7.19
+
+      - name: Install packages
+        run: |
+          # Install local package(s)
+          uv venv
+          uv pip install ./graphs[typing]
+
+      - name: Run ty typing for ${{ matrix.package }}
+        run: |
+          uv run --with "ty>=0.0.12" check
+             --config-file ./${{ matrix.package }}/ty.toml
+             --output-format github
+             ./${{ matrix.package }}/src/
